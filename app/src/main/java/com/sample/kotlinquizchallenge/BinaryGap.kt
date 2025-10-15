@@ -16,9 +16,13 @@ package com.sample.kotlinquizchallenge
 
 fun main() {
     print("Enter a number : ")
-    val binaryNumber = readLine()?.toIntOrNull() ?: 0
-
-    val binaryString = binaryNumber.toString(2)
+    val binaryNumber = readLine()?.toIntOrNull()
+        ?: run {
+            println("Please enter a valid integer (e.g., 42 or -7).")
+            return
+        }
+    val number = kotlin.math.abs(binaryNumber)
+    val binaryString = number.toString(2)
     println("Binary representation of $binaryNumber is: $binaryString")
     val maxGap = findBinaryGap(binaryString)
     println("The longest sequence of consecutive zeros in binary representation is: $maxGap")
