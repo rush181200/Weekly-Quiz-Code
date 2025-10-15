@@ -15,6 +15,25 @@ package com.sample.kotlinquizchallenge
 * 75 → 75 (accepted)
 * */
 
-fun main() {
+object Auction {
+    private var currentBid: Int? = null
 
+    fun placeBid(amount: Int): Int? {
+        if (amount <= 0) return null                       // reject non-positive bids
+        return if (currentBid == null || amount > currentBid!!) {
+            currentBid = amount
+            amount
+        } else {
+            null
+        }
+    }
+
+    fun getCurrentBid(): Int? = currentBid
+}
+
+// Demo
+fun main() {
+    println("50 → ${Auction.placeBid(50)}")  // accepted
+    println("30 → ${Auction.placeBid(30)}")  // rejected (too low)
+    println("75 → ${Auction.placeBid(75)}")  // accepted (higher)
 }
