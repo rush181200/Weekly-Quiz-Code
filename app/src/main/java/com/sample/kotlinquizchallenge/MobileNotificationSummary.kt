@@ -11,5 +11,29 @@ package com.sample.kotlinquizchallenge
 * */
 
 fun main() {
+    var number: Int
+    while (true) {
+        print("Enter a number of Notifications: ")
+        val raw = readLine()?.trim().orEmpty()
+        val inputNumber = raw.toIntOrNull()
+        if (inputNumber == null) {
+            println("Please enter a valid integer (e.g., 42 or -7).")
+            continue
+        }
+        number = kotlin.math.abs(inputNumber)
+        break
+    }
 
+    numberOfNotification(number)
+
+}
+
+fun numberOfNotification(number: Int){
+    if(number<99 && number>0){
+        print("You have $number Notifications")
+    }else if(number>100){
+        print("You have Notifications 99+")
+    }else{
+        print("No Notifications")
+    }
 }
